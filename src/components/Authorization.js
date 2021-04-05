@@ -8,7 +8,7 @@ import { CreateActionSetLogin, CreateActionPassword } from '../actions/actions'
 class Authorization extends React.Component {
    check = false;
    ls = window.localStorage;
-   URL = "https://576031bbc0d2.ngrok.io";
+   URL = "http://localhost:3001";
    state = {
       message: ""
    }

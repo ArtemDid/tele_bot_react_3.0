@@ -4,7 +4,7 @@ import './style.css';
 
 
 const App = () => {
-    const URL = "https://576031bbc0d2.ngrok.io/users";
+    const URL = "http://localhost:3001/users";
 
     var [source, setSource] = useState([]);
     var [searchTerm, setSearchTerm] = useState("");
