@@ -6,7 +6,25 @@ html, body {
     background-color: #212529;
 }
 
+.App {
+    text-align: center;
+}
 
+.header {
+    padding: 0px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.ant-col-rtl .login-form-forgot {
+    float: left;
+}
+
+.login-form-button {
+    width: 100%;
+}
 
 #container {
     -webkit-box-sizing: border-box;
@@ -54,24 +72,23 @@ form .search {
     text-align: center;
 }
 
-.navbar-light{
+.navbar-light {
     background-color: tan;
 }
 
-.navbar .btn, .navbar-text{
+.navbar .btn, .navbar-text {
     margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.navbar{
+.navbar {
     padding: 0px;
 }
 
-.navbar-light .dropdown-toggle{
+.navbar-light .dropdown-toggle {
     margin-left: 0px;
 }
-
 
 .pagination li, input {
     margin-right: 5px;
@@ -85,10 +102,10 @@ form .search {
     padding: 0px;
 }
 
-.btnnav{
+.btnnav {
     margin-top: 5px;
 }
 
-.navbar-light{
+.navbar-light {
     background-color: #899196;
 }

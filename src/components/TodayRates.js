@@ -49,7 +49,7 @@ const App = () => {
 
     return (
         <Fragment>
-            <a className="btn btn-dark" data-toggle="modal" data-target="#largeModal2">Course for today </a>
+            <a data-toggle="modal" data-target="#largeModal2">Course for today </a>
 
             <div id="largeModal2" className="modal fade" tabindex="-1" role="dialog">
                 <div className="modal-dialog modal-lg">
