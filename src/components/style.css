@@ -1,0 +1,94 @@
+html, body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.1em;
+    min-height: 100%;
+    background-color: #212529;
+}
+
+
+
+#container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: rgb(219, 214, 214);
+    padding-left: 40px;
+    padding-right: 20px;
+}
+
+.dropdown-menu.scrollable {
+    height: auto;
+    max-height: 20em;
+    overflow-x: hidden;
+    min-width: 120px !important;
+}
+
+form .search {
+    margin: 10px;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 10%;
+    background: #f1f1f1;
+}
+
+.main {
+    text-align: center;
+    padding-top: 3vh;
+}
+
+.round {
+    border-radius: 50%;
+    /* Радиус скругления */
+    border: 3px solid rgb(15, 1, 221);
+    /* Параметры рамки */
+    box-shadow: 0 0 7px #666;
+    /* Параметры тени */
+    width: 50px;
+    /* src: url('/spinner.gif'); */
+}
+
+.container-fluid {
+    padding: 0px;
+    text-align: center;
+}
+
+.navbar-light{
+    background-color: tan;
+}
+
+.navbar .btn, .navbar-text{
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.navbar{
+    padding: 0px;
+}
+
+.navbar-light .dropdown-toggle{
+    margin-left: 0px;
+}
+
+
+.pagination li, input {
+    margin-right: 5px;
+}
+
+.modal-body {
+    padding: 0px;
+}
+
+.search {
+    padding: 0px;
+}
+
+.btnnav{
+    margin-top: 5px;
+}
+
+.navbar-light{
+    background-color: #899196;
+}
