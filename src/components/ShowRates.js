@@ -8,18 +8,28 @@ import {
     XAxis,
     YAxis
 } from "recharts";
+import { Modal, Button, Menu, Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 import './style.css';
 
 export const App = () => {
     const URL = "http://localhost:3001";
 
     const [dataRates, setdataRates] = useState([]);
-    const [rate, setCurrencyRates] = useState('');
 
     const Currency = ['AZN', 'BYN', 'CAD', 'CHF', 'CNY', 'CZK', 'DKK', 'EUR', 'GBP', 'GEL', 'HUF', 'ILS', 'JPY', 'KZT', 'MDL', 'NOK', 'PLZ', 'RUB', 'SEK', 'SGD', 'TMT', 'TRY', 'USD', 'UZS']
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
+
     function currency(rate) {
-        setCurrencyRates(rate);
         fetch(`${URL}/rates`, {
             method: 'POST',
             headers: {
@@ -46,15 +56,59 @@ export const App = () => {
 
     }
 
-    const renderCurrency = Currency.map((item, index) => {
-        return (
-            <li key={index}><a class="dropdown-item" href="#" onClick={() => currency(item)}>{item}</a></li>
-        )
-    });
+    const menu = (
+        <Menu>
+            {Currency.map((item, index) => {
+                return (
+                    <Menu.Item key={index}>
+                        <a href="#" onClick={() => currency(item)}>{item}</a>
+                    </Menu.Item>
+                )
+            })}
+        </Menu>
+    );
 
     return (
         <Fragment>
-            <a data-toggle="modal" data-target="#largeModal">Monitoring of courses </a>
+            <a type="primary" onClick={showModal}> Monitoring of courses </a>
+
+            <Modal title="Monitoring of courses" visible={isModalVisible} width='800px' onCancel={handleCancel}
+                footer={[
+                    <Dropdown overlay={menu} trigger={['click']}>
+                        <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                            Currency <DownOutlined />
+                        </a>
+                    </Dropdown>,
+                    <Button key="Close" onClick={handleCancel} style={{marginLeft: '10px'}}>
+                        Close
+                </Button>
+                ]}
+            >
+                <div id="container" >
+                    <LineChart
+                        data={dataRates}
+                        height={300}
+                        width={600}
+                        margin={{ top: 5, right: 30, left: 20, bottom: 25 }}
+                    >
+                        <XAxis dataKey="month" />
+                        <YAxis />
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <Tooltip />
+                        <Legend />
+                        <Line
+                            type="monotone"
+                            dataKey="saleRate"
+                            stroke="#8884d8"
+                            activeDot={{ r: 8 }}
+                        />
+                        <Line type="monotone" dataKey="purchaseRate" stroke="#82ca9d" />
+                    </LineChart>
+
+                </div>
+            </Modal>
+
+            {/* <a data-toggle="modal" data-target="#largeModal">Monitoring of courses </a>
 
             <div id="largeModal" className="modal fade" tabindex="-1" role="dialog">
                 <div className="modal-dialog modal-lg">
@@ -106,7 +160,7 @@ export const App = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
         </Fragment>
     );

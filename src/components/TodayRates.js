@@ -1,10 +1,24 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Modal, Button, Table } from 'antd';
 import './style.css';
 
 const App = () => {
     const URL = "http://localhost:3001/rates/today";
 
     const [dataRates, setdataRates] = useState([]);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleOk = () => {
+        setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
 
     function rates() {
         fetch(`${URL}`, {
@@ -32,9 +46,42 @@ const App = () => {
 
     }
 
+    const columns = [
+        {
+            title: 'BaseCurrency',
+            dataIndex: 'baseCurrency',
+            align: 'center',
+            key: 'baseCurrency',
+        },
+        {
+            title: 'Currency',
+            dataIndex: 'currency',
+            align: 'center',
+            key: 'currency',
+        },
+        {
+            title: 'SaleRate',
+            dataIndex: 'saleRateNB',
+            align: 'center',
+            key: 'saleRateNB',
+            defaultSortOrder: 'descend',
+            sorter: (a, b) => a.saleRateNB - b.saleRateNB,
+        },
+        {
+            title: 'PurchaseRate',
+            dataIndex: 'purchaseRateNB',
+            align: 'center',
+            key: 'purchaseRateNB',
+        },
+    ];
+
     useEffect(() => {
         rates();
     }, [])
+
+    function onChange(pagination, filters, sorter, extra) {
+        console.log('params', pagination, filters, sorter, extra);
+    }
 
     const renderCurrency = dataRates.map((item, index) => {
         return (
@@ -49,7 +96,15 @@ const App = () => {
 
     return (
         <Fragment>
-            <a data-toggle="modal" data-target="#largeModal2">Course for today </a>
+            <a type="primary" onClick={showModal}> Course for today </a>
+
+            <Modal title="Monitoring of course for today" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                <Table columns={columns} dataSource={dataRates} onChange={onChange} />
+
+            </Modal>
+
+
+            {/* <a data-toggle="modal" data-target="#largeModal2">Course for today </a>
 
             <div id="largeModal2" className="modal fade" tabindex="-1" role="dialog">
                 <div className="modal-dialog modal-lg">
@@ -84,7 +139,7 @@ const App = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
 
         </Fragment>
     );

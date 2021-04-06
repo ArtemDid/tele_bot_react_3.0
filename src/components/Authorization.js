@@ -8,10 +8,6 @@ import { Form, Input, Button, Checkbox, DatePicker, TimePicker, Select, Cascader
 import { CreateActionSetLogin, CreateActionPassword } from '../actions/actions'
 import './style.css';
 
-const onFinish = (values) => {
-   console.log('Received values of form: ', values);
-};
-
 class Authorization extends React.Component {
    check = false;
    ls = window.localStorage;
@@ -81,14 +77,13 @@ class Authorization extends React.Component {
             style={{ width: "300px", margin: "auto" }}
             name="normal_login"
             initialValues={{ remember: true }}
-            onFinish={onFinish}
          >
             <h2>Sign in</h2>
             <Form.Item
                name="username"
                validateStatus={this.state.error}
             >
-               <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Login" 
+               <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="name@example.com" 
                defaultValue={localStorage.getItem(Object.keys(localStorage)[0])}
                onChange={(event) => this.setLogin(event)}
                />
@@ -106,7 +101,7 @@ class Authorization extends React.Component {
                />
             </Form.Item>
             <Form.Item>
-               <Button type="primary" htmlType="submit" className="login-form-button" onClick={(event) => this.auth(event)}> Log in </Button>
+               <Button type="primary" className="login-form-button" onClick={(event) => this.auth(event)}> Sign in </Button>
                Or <NavLink to="/registration" activeClassName="active">register now!</NavLink>
             </Form.Item>
          </Form>
