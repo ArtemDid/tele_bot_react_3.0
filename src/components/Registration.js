@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import { CreateActionSetLogin, CreateActionPassword } from '../actions/actions'
-import { SmileOutlined, UserOutlined, LockOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Form, Input, Button, Checkbox, DatePicker, TimePicker, Select, Cascader, InputNumber, Upload, message } from 'antd';
+import { UserOutlined, LockOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Upload, message } from 'antd';
 
 function getBase64(img, callback) {
     const reader = new FileReader();
@@ -62,7 +62,6 @@ class Registration extends React.Component {
             return;
         }
         if (info.file.status === 'done') {
-            // Get this url from response in real world.
             getBase64(info.file.originFileObj, imageUrl =>
                 this.setState({
                     imageUrl,
@@ -164,39 +163,6 @@ class Registration extends React.Component {
                     {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
                 </Upload>
             </Form>
-
-
-
-
-            // <form style={{ width: "500px", margin: "auto" }}>
-            //     <h2 class="text-white">Sign up</h2>
-            //     <div className="form-group">
-            //         <label class="text-white" htmlFor="email">Email address</label>
-            //         <input className="form-control" onChange={(event) => this.setLogin(event)} id="email" type="email" name="email" placeholder="name@example.com" />
-            //     </div>
-            //     <div className="form-group">
-            //         <label class="text-white" htmlFor="password">Password</label>
-            //         <input className="form-control" onChange={(event) => this.setPassword(event)} id="password" type="password" name="password" placeholder="••••••••" />
-            //     </div>
-            //     {!this.state.message ? null : <span style={{ color: "#D81313", fontSize: "12px" }}>{this.state.message}</span>}
-            //     <div className='btnnav'>
-            //         <nav className="navbar navbar-light ">
-            //             <form className="container-fluid justify-content-end">
-            //             <input
-            //                 className="btn btn-outline-dark"
-            //                 onChange={(event) => this.setImage(event)}
-            //                 accept="image/*"
-            //                 type="file"
-            //             />
-            //              <span className="navbar-text">
-            //              {this.state.loading ? 'Retention...' : null}
-            //             </span>
-            //             <NavLink to="/" className="btn btn-outline-dark"  onClick={(event) => this.register(event)}>Sign up</NavLink>
-            //             </form>
-            //         </nav>
-            //     </div>
-            // </form>
-
         );
     }
 }

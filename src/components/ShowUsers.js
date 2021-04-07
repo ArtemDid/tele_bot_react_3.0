@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb, Table, Input, Button, Space, Avatar, Image } from "antd";
+import { Layout, Menu, Table, Input, Button, Space, Avatar, Image } from "antd";
 import Highlighter from 'react-highlight-words';
-import { SearchOutlined, UserOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 import './style.css';
 const { Header, Content, Sider } = Layout;
@@ -173,7 +173,7 @@ class App extends React.Component {
 
         return (
 
-            <div className="App" >
+            <div className="main" >
                 <Layout>
                     <Header className="header">
                         <Menu theme="dark" mode="horizontal" style={{ textAlign: 'end' }}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Menu, Breadcrumb, Table, Input, Button, Space } from "antd";
+import { Layout, Menu, Table, Input, Button, Space } from "antd";
 import "antd/dist/antd.css";
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
@@ -8,7 +8,7 @@ import TodayRates from './TodayRates';
 import { NavLink } from 'react-router-dom';
 import './style.css';
 const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Header} = Layout;
 
 class App extends React.Component {
     URL = "http://localhost:3001/";
@@ -150,8 +150,6 @@ class App extends React.Component {
         });
     }
 
-
-
     render() {
         const columns = [
             {
@@ -180,7 +178,7 @@ class App extends React.Component {
         ];
 
         return (
-            <div className="App" >
+            <div className='main'>
                 <Layout>
                     <Header className="header">
                         <Menu theme="dark" mode="horizontal" style={{ textAlign: 'end' }}>
@@ -198,7 +196,6 @@ class App extends React.Component {
                             </Menu.Item>
                             <Menu.Item key="4">
                                 <a href="/">Logout</a>
-                                {/* <NavLink to="/" activeClassName="active">Logout</NavLink> */}
                             </Menu.Item>
                         </Menu>
                     </Header>
@@ -207,9 +204,6 @@ class App extends React.Component {
                 <div className='container'>
                     <Table columns={columns} dataSource={this.state.data} position="bottomCenter" />
                 </div>
-
-                {/* <InputNumber min={1} max={10} defaultValue={5} onChange={(value) => this.setCount(value)} /> */}
-
             </div>
         );
     }
